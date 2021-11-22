@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:ignore="ContentDescription">
+
 
     <Button
         android:id="@+id/button"
@@ -12,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/categories"
+        android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +28,7 @@
         android:layout_marginEnd="36dp"
         android:onClick="GoToShoppingCart"
         android:text="@string/cart"
+        android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,6 +39,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="28dp"
         android:text="@string/button"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,12 +48,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        tools:ignore="SpeakableTextPresentCheck">
+        app:layout_constraintTop_toBottomOf="@+id/button2">
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:paddingBottom="50dp">
 
             <TableRow
@@ -63,13 +67,19 @@
                     android:layout_width="114dp"
                     android:layout_height="114dp"
                     android:layout_marginEnd="35dp"
-                    app:srcCompat="@android:drawable/gallery_thumb" />
+                    android:onClick="GoToItemListing"
+                    android:tag="1"
+                    app:srcCompat="@android:drawable/gallery_thumb"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="114dp"
                     android:layout_height="114dp"
-                    app:srcCompat="@android:drawable/gallery_thumb" />
+                    android:onClick="GoToItemListing"
+                    android:tag="2"
+                    app:srcCompat="@android:drawable/gallery_thumb"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
             </TableRow>
 
@@ -85,13 +95,19 @@
                     android:layout_width="114dp"
                     android:layout_height="114dp"
                     android:layout_marginEnd="35dp"
-                    app:srcCompat="@android:drawable/gallery_thumb" />
+                    android:onClick="GoToItemListing"
+                    android:tag="3"
+                    app:srcCompat="@android:drawable/gallery_thumb"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="114dp"
                     android:layout_height="114dp"
-                    app:srcCompat="@android:drawable/gallery_thumb" />
+                    android:onClick="GoToItemListing"
+                    android:tag="4"
+                    app:srcCompat="@android:drawable/gallery_thumb"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
             </TableRow>
 
@@ -107,13 +123,19 @@
                     android:layout_width="114dp"
                     android:layout_height="114dp"
                     android:layout_marginEnd="35dp"
-                    app:srcCompat="@android:drawable/gallery_thumb" />
+                    android:onClick="GoToItemListing"
+                    android:tag="5"
+                    app:srcCompat="@android:drawable/gallery_thumb"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageView
                     android:id="@+id/imageView6"
                     android:layout_width="114dp"
                     android:layout_height="114dp"
-                    app:srcCompat="@android:drawable/gallery_thumb" />
+                    android:onClick="GoToItemListing"
+                    app:srcCompat="@android:drawable/gallery_thumb"
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:tag="6" />
 
             </TableRow>
 
@@ -129,13 +151,19 @@
                     android:layout_width="114dp"
                     android:layout_height="114dp"
                     android:layout_marginEnd="35dp"
-                    app:srcCompat="@android:drawable/gallery_thumb" />
+                    android:onClick="GoToItemListing"
+                    android:tag="7"
+                    app:srcCompat="@android:drawable/gallery_thumb"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageView
                     android:id="@+id/imageView8"
                     android:layout_width="114dp"
                     android:layout_height="114dp"
-                    app:srcCompat="@android:drawable/gallery_thumb" />
+                    android:onClick="GoToItemListing"
+                    android:tag="8"
+                    app:srcCompat="@android:drawable/gallery_thumb"
+                    tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
 
             </TableRow>
 
@@ -151,13 +179,19 @@
                     android:layout_width="114dp"
                     android:layout_height="114dp"
                     android:layout_marginEnd="35dp"
-                    app:srcCompat="@android:drawable/gallery_thumb" />
+                    android:onClick="GoToItemListing"
+                    android:tag="9"
+                    app:srcCompat="@android:drawable/gallery_thumb"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageView
                     android:id="@+id/imageView10"
                     android:layout_width="114dp"
                     android:layout_height="114dp"
-                    app:srcCompat="@android:drawable/gallery_thumb" />
+                    android:onClick="GoToItemListing"
+                    android:tag="10"
+                    app:srcCompat="@android:drawable/gallery_thumb"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
             </TableRow>
 
@@ -173,12 +207,17 @@
                     android:layout_width="114dp"
                     android:layout_height="114dp"
                     android:layout_marginEnd="35dp"
-                    app:srcCompat="@android:drawable/gallery_thumb" />
+                    android:onClick="GoToItemListing"
+                    android:tag="11"
+                    app:srcCompat="@android:drawable/gallery_thumb"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageView
-                    android:id="@+id/imageView12"
+                    android:id="@+id/imageView122"
                     android:layout_width="114dp"
                     android:layout_height="114dp"
+                    android:onClick="GoToItemListing"
+                    android:tag="12"
                     app:srcCompat="@android:drawable/gallery_thumb" />
 
             </TableRow>
