@@ -20,5 +20,6 @@ public class ItemListing extends AppCompatActivity {
         String itemId = intent.getStringExtra("item id");
         textItemId.setText(itemId);
         Log.d("item id", itemId);
+        //asd
     }
 }
