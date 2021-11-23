@@ -21,5 +21,6 @@ public class ItemListing extends AppCompatActivity {
         textItemId.setText(itemId);
         Log.d("item id", itemId);
         //asd
+        //joo
     }
 }
