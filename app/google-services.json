@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "4206102056",
+    "firebase_url": "https://kirppis-30fd3-default-rtdb.firebaseio.com",
+    "project_id": "kirppis-30fd3",
+    "storage_bucket": "kirppis-30fd3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:4206102056:android:d7693c15ef6253e884171d",
+        "android_client_info": {
+          "package_name": "com.example.kirppis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "4206102056-is5ddc6oob9iun5in1ie6clvae6l4lqt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kirppis",
+            "certificate_hash": "351d9219c45acfef5d8e3c008f9b32209622f604"
+          }
+        },
+        {
+          "client_id": "4206102056-pk8ls7kqbjep47ferc51s29v5kllevs6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIaQ05Bx3L4DdI0LHMXH-_XJjQtRt3wOM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "4206102056-pk8ls7kqbjep47ferc51s29v5kllevs6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
