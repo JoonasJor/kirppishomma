@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 
 public class ItemListing extends AppCompatActivity {
 
-    private DatabaseReference mDatabase;
+    private DatabaseReference db;
     private ImageView imageView;
     private TextView textDesc, textName, textPrice, textItemId;
     private Item item;
@@ -37,25 +37,29 @@ public class ItemListing extends AppCompatActivity {
         Intent intent = getIntent();
         String itemId = intent.getStringExtra("item id");
         textItemId.setText(itemId);
-        Log.d("item id", itemId);
+        Log.d("debuggi", "item id: " + itemId);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        db = FirebaseDatabase.getInstance().getReference();
 
 
+        /*testi
+        String testItemId = "0";
+        addNewItem(testItemId, "toinen laukku", "110", "tämäkin on komia", "ee");
+        testi*/
 
-        //testi
-        String testItemId = "2";
-        //addNewItem(testItemId, "porakone", "90", "porakone", "ee");
 
-        mDatabase.child("items").child(testItemId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        //ladataan tuote databasesta id perusteella
+        db.child("items").child(itemId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
                     Log.e("debuggi", "Error getting data", task.getException());
                 }
                 else {
+                    //muunnetaan(Type Cast) DataSnapshot tyyppinen tulos databasesta Item tyyppiseksi
                     item = (Item) task.getResult().getValue(Item.class);
-                    Log.d("debuggi", item.name);
+
+                    //sijoitetaan arvot näkymään
                     textDesc.setText(item.description);
                     textName.setText(item.name);
                     textPrice.setText(item.price + "€");
@@ -70,7 +74,7 @@ public class ItemListing extends AppCompatActivity {
     public void addNewItem(String itemId, String name, String price, String description, String image) {
         Item item = new Item(name, price, description, image);
 
-        mDatabase.child("items").child(itemId).setValue(item);
+        db.child("items").child(itemId).setValue(item);
     }
 
 
