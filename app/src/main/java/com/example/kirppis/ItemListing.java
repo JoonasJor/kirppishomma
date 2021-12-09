@@ -43,8 +43,8 @@ public class ItemListing extends AppCompatActivity {
 
 
         /*testi
-        String testItemId = "0";
-        addNewItem(testItemId, "toinen laukku", "110", "tämäkin on komia", "ee");
+        String testItemId = "6";
+        addNewItem(testItemId, "nahkahanskat", "165", "tämäkin on komia", "ee");
         testi*/
 
 

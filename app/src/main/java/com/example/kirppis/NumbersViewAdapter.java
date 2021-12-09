@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class NumbersViewAdapter extends ArrayAdapter<NumbersView> {
@@ -40,7 +43,8 @@ public class NumbersViewAdapter extends ArrayAdapter<NumbersView> {
         // then according to the position of the view assign the desired image for the same
         ImageView numbersImage = currentItemView.findViewById(R.id.imageView);
         assert currentNumberPosition != null;
-        numbersImage.setImageResource(currentNumberPosition.getNumbersImageId());
+        //numbersImage.setImageResource(currentNumberPosition.getNumbersImageId());
+        Picasso.get().load(currentNumberPosition.getNumbersImageId()).into(numbersImage);
 
         // then according to the position of the view assign the desired TextView 1 for the same
         TextView textView1 = currentItemView.findViewById(R.id.textView1);
