@@ -52,9 +52,41 @@ public class MainActivity extends AppCompatActivity {
         }
         else{
             Log.d("debuggi", "signed in " + currentUser);
-            loadItems();
+            //loadItems();
+
+            final ArrayList<NumbersView> arrayList = new ArrayList<NumbersView>();
+
+            // add all the values from 1 to 15 to the arrayList
+            // the items are of the type NumbersView
+            arrayList.add(new NumbersView(R.drawable.common_full_open_on_phone, "1", "One"));
+            arrayList.add(new NumbersView(R.drawable.common_full_open_on_phone, "2", "Two"));
+            arrayList.add(new NumbersView(R.drawable.common_full_open_on_phone, "3", "Three"));
+            arrayList.add(new NumbersView(R.drawable.common_full_open_on_phone, "4", "Four"));
+            arrayList.add(new NumbersView(R.drawable.common_full_open_on_phone, "5", "Five"));
+            arrayList.add(new NumbersView(R.drawable.common_full_open_on_phone, "6", "Six"));
+            arrayList.add(new NumbersView(R.drawable.common_full_open_on_phone, "7", "Seven"));
+            arrayList.add(new NumbersView(R.drawable.common_full_open_on_phone, "8", "Eight"));
+            arrayList.add(new NumbersView(R.drawable.common_full_open_on_phone, "9", "Nine"));
+            arrayList.add(new NumbersView(R.drawable.common_full_open_on_phone, "10", "Ten"));
+            arrayList.add(new NumbersView(R.drawable.common_full_open_on_phone, "11", "Eleven"));
+            arrayList.add(new NumbersView(R.drawable.common_full_open_on_phone, "12", "Twelve"));
+            arrayList.add(new NumbersView(R.drawable.common_full_open_on_phone, "13", "Thirteen"));
+            arrayList.add(new NumbersView(R.drawable.common_full_open_on_phone, "14", "Fourteen"));
+            arrayList.add(new NumbersView(R.drawable.common_full_open_on_phone, "15", "Fifteen"));
+
+            // Now create the instance of the NumebrsViewAdapter and pass
+            // the context and arrayList created above
+            NumbersViewAdapter numbersArrayAdapter = new NumbersViewAdapter(this, arrayList);
+
+            // create the instance of the ListView to set the numbersViewAdapter
+            ListView numbersListView = findViewById(R.id.listView);
+
+            // set the numbersViewAdapter for ListView
+            numbersListView.setAdapter(numbersArrayAdapter);
         }
     }
+
+
 
     //database
     private void loadItems() {
