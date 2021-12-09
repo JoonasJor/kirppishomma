@@ -57,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
     //database
     private void loadItems() {
         db.child("items").addListenerForSingleValueEvent((new ValueEventListener() {
@@ -68,9 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //ladataan ensin databasesta tuotteet ArrayListiin
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
-                    //itemList.add(postSnapshot.getValue(Item.class));
                     arrayList.add(new NumbersView(postSnapshot.getValue(Item.class).image, postSnapshot.getValue(Item.class).name, postSnapshot.getValue(Item.class).price + "€"));
-                    //itemList.add(postSnapshot.getValue(Item.class).name);
                 }
                 // Now create the instance of the NumebrsViewAdapter and pass
                 // the context and arrayList created above

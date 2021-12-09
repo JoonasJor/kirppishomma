@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ public class ItemListing extends AppCompatActivity {
     private ImageView imageView;
     private TextView textDesc, textName, textPrice, textItemId;
     private Item item;
+    private String itemId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,7 @@ public class ItemListing extends AppCompatActivity {
         imageView = findViewById(R.id.imageItem);
 
         Intent intent = getIntent();
-        String itemId = intent.getStringExtra("item id");
+        itemId = intent.getStringExtra("item id");
         textItemId.setText(itemId);
         Log.d("debuggi", "item id: " + itemId);
 
@@ -75,6 +77,12 @@ public class ItemListing extends AppCompatActivity {
         Item item = new Item(name, price, description, image);
 
         db.child("items").child(itemId).setValue(item);
+    }
+
+    public void addToShoppingCart(View view){
+        Intent intent = new Intent(this, ShoppingCart.class);
+        intent.putExtra("item id", String.valueOf(itemId));
+        startActivity(intent);
     }
 
 
