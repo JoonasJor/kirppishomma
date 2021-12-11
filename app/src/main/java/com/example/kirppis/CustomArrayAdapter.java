@@ -15,10 +15,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class NumbersViewAdapter extends ArrayAdapter<NumbersView> {
+public class CustomArrayAdapter extends ArrayAdapter<CustomView> {
 
     // invoke the suitable constructor of the ArrayAdapter class
-    public NumbersViewAdapter(@NonNull Context context, ArrayList<NumbersView> arrayList) {
+    public CustomArrayAdapter(@NonNull Context context, ArrayList<CustomView> arrayList) {
 
         // pass the context and arrayList for the super
         // constructor of the ArrayAdapter class
@@ -38,21 +38,20 @@ public class NumbersViewAdapter extends ArrayAdapter<NumbersView> {
         }
 
         // get the position of the view from the ArrayAdapter
-        NumbersView currentNumberPosition = getItem(position);
+        CustomView currentNumberPosition = getItem(position);
 
         // then according to the position of the view assign the desired image for the same
-        ImageView numbersImage = currentItemView.findViewById(R.id.imageView);
+        ImageView imageView = currentItemView.findViewById(R.id.imageView);
         assert currentNumberPosition != null;
-        //numbersImage.setImageResource(currentNumberPosition.getNumbersImageId());
-        Picasso.get().load(currentNumberPosition.getNumbersImageId()).into(numbersImage);
+        Picasso.get().load(currentNumberPosition.getImageUrl()).into(imageView);
 
         // then according to the position of the view assign the desired TextView 1 for the same
         TextView textView1 = currentItemView.findViewById(R.id.textView1);
-        textView1.setText(currentNumberPosition.getNumberInDigit());
+        textView1.setText(currentNumberPosition.getItemName());
 
         // then according to the position of the view assign the desired TextView 2 for the same
         TextView textView2 = currentItemView.findViewById(R.id.textView2);
-        textView2.setText(currentNumberPosition.getNumbersInText());
+        textView2.setText(currentNumberPosition.getItemPrice());
 
         // then return the recyclable view
         return currentItemView;

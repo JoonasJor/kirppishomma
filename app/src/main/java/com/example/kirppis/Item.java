@@ -4,19 +4,35 @@ import com.google.firebase.database.IgnoreExtraProperties;
 @IgnoreExtraProperties
 public class Item {
 
-    public String name;
-    public String price;
-    public String description;
-    public String image;
+    private String name;
+    private String price;
+    private String description;
+    private String image;
 
     public Item() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public Item(String name, String price, String description, String image) {
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.image = image;
+    public Item(String dbName, String dbPrice, String dbDescription, String dbImage) {
+        name = dbName;
+        price = dbPrice;
+        description = dbDescription;
+        image = dbImage;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

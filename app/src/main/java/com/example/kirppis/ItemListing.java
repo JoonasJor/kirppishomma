@@ -2,6 +2,8 @@ package com.example.kirppis;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -52,6 +54,7 @@ public class ItemListing extends AppCompatActivity {
 
         //ladataan tuote databasesta id perusteella
         db.child("items").child(itemId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -62,10 +65,11 @@ public class ItemListing extends AppCompatActivity {
                     item = (Item) task.getResult().getValue(Item.class);
 
                     //sijoitetaan arvot näkymään
-                    textDesc.setText(item.description);
-                    textName.setText(item.name);
-                    textPrice.setText(item.price + "€");
-                    Picasso.get().load(item.image).into(imageView);
+                    assert item != null;
+                    textDesc.setText(item.getDescription());
+                    textName.setText(item.getName());
+                    textPrice.setText(item.getPrice() + "€");
+                    Picasso.get().load(item.getImage()).into(imageView);
 
                     Log.d("debuggi", String.valueOf(task.getResult().getValue()));
                 }
