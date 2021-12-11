@@ -8,14 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,16 +18,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference db;
-    private ArrayList<Item> itemList = new ArrayList<Item>();
-    //private ArrayList<String> itemList = new ArrayList<String>();
-    private ListView listView;
+    private final ArrayList<CustomView> itemList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance().getReference();
-        listView = findViewById(R.id.listView);
 
         //kirjautuminen
         FirebaseUser currentUser = auth.getCurrentUser();
@@ -56,32 +47,33 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //database
+    //tuotelistan lataus firebasesta
     private void loadItems() {
         db.child("items").addListenerForSingleValueEvent((new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Log.d("debuggi" ,"item count: " + snapshot.getChildrenCount());
 
-                //ladataan ensin databasesta tuotteet ArrayListiin
+                //ladataan ensin databasesta tuotteet itemListiin
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
-                    itemList.add(postSnapshot.getValue(Item.class));
-                    //itemList.add(postSnapshot.getValue(Item.class).name);
+                    itemList.add(new CustomView(postSnapshot.getValue(Item.class).getImage(),
+                                                postSnapshot.getValue(Item.class).getName(),
+                                      postSnapshot.getValue(Item.class).getPrice() + "€"));
                 }
+                // Now create the instance of the CustomArrayAdapter and pass
+                // the context and arrayList created above
+                CustomArrayAdapter customArrayAdapter = new CustomArrayAdapter(MainActivity.this, itemList);
 
-                //sitten lisätään ArrayListin sisältö ListViewiin ArrayAdapterilla
+                // create the instance of the ListView to set the CustomArrayAdapter
+                ListView listView = findViewById(R.id.listView);
 
-                //tällä hetkellä listView listaa vain Item objektit string muodossa,
-                //tää pitää muuttaa silleen että se listaa tuotteiden kuvat ja vaikkapa hinnan ja nimen
-                Log.d("debuggi", String.valueOf(itemList));
-                ArrayAdapter arrayAdapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, itemList);
-                listView.setAdapter(arrayAdapter);
+                // set the CustomArrayAdapter for ListView
+                listView.setAdapter(customArrayAdapter);
 
                 //viedään tuotteen id ItemListingiin klikattaessa sitä
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        //Toast.makeText(MainActivity.this, "clicked item: " + i + " " + itemList.get(i).name, Toast.LENGTH_SHORT).show();
                         goToItemListing(i);
                     }
                 });
