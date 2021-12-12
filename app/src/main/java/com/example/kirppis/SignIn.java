@@ -60,6 +60,7 @@ public class SignIn extends AppCompatActivity {
         Intent signInIntent = AuthUI.getInstance()
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
+                .setTheme(R.style.Theme_Kirppis)
                 .build();
         signInLauncher.launch(signInIntent);
         // [END auth_fui_create_intent]
@@ -115,7 +116,7 @@ public class SignIn extends AppCompatActivity {
                 .createSignInIntentBuilder()
                 .setAvailableProviders(providers)
                 .setLogo(R.drawable.fui_ic_github_white_24dp)      // Set logo drawable
-                .setTheme(R.style.FirebaseUI_DefaultMaterialTheme)      // Set theme
+                .setTheme(R.style.Theme_Kirppis)      // Set theme
                 .build();
         signInLauncher.launch(signInIntent);
         // [END auth_fui_theme_logo]
