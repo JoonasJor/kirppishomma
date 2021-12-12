@@ -17,10 +17,15 @@
 
     <TextView
         android:id="@+id/textDescription"
-        android:layout_width="165dp"
-        android:layout_height="362dp"
+        android:layout_width="170dp"
+        android:layout_height="350dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
+        android:textAlignment="center"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         android:text="@string/large_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textName" />
@@ -35,21 +40,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageItem" />
 
-    <TextView
-        android:id="@+id/textItemId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageItem"
-        app:layout_constraintStart_toStartOf="@+id/imageItem"
-        app:layout_constraintTop_toTopOf="@+id/imageItem" />
 
     <TextView
         android:id="@+id/textName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
         android:text="Laukku"
+        android:textColor="#A0522D"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textDescription"
         app:layout_constraintStart_toStartOf="@+id/textDescription"
         app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +61,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="addToShoppingCart"
-        android:text="Button"
+        app:backgroundTint="#A0522D"
+        android:text="Osta"
         app:layout_constraintEnd_toEndOf="@+id/textDescription"
         app:layout_constraintTop_toBottomOf="@+id/textDescription" />
 

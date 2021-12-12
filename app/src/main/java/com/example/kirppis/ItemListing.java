@@ -35,12 +35,10 @@ public class ItemListing extends AppCompatActivity {
         textDesc = findViewById(R.id.textDescription);
         textName = findViewById(R.id.textName);
         textPrice = findViewById(R.id.textPrice);
-        textItemId = findViewById(R.id.textItemId);
         imageView = findViewById(R.id.imageItem);
 
         Intent intent = getIntent();
         itemId = intent.getStringExtra("item id");
-        textItemId.setText(itemId);
         Log.d("debuggi", "item id: " + itemId);
 
         db = FirebaseDatabase.getInstance().getReference();
@@ -68,7 +66,7 @@ public class ItemListing extends AppCompatActivity {
                     assert item != null;
                     textDesc.setText(item.getDescription());
                     textName.setText(item.getName());
-                    textPrice.setText(item.getPrice() + "€");
+                    textPrice.setText(item.getPrice() + "");
                     Picasso.get().load(item.getImage()).into(imageView);
 
                     Log.d("debuggi", String.valueOf(task.getResult().getValue()));

@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     itemList.add(new CustomView(postSnapshot.getValue(Item.class).getImage(),
                                                 postSnapshot.getValue(Item.class).getName(),
-                                      postSnapshot.getValue(Item.class).getPrice() + "€"));
+                                      postSnapshot.getValue(Item.class).getPrice() + ""));
                 }
                 // Now create the instance of the CustomArrayAdapter and pass
                 // the context and arrayList created above
