@@ -6,22 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".ShoppingCart">
 
-    <TextView
-        android:id="@+id/textView"
+    <Button
+        android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ostoskori"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:backgroundTint="#A0522D"
+        android:text="Osta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewPriceTotal"
+        app:layout_constraintTop_toTopOf="@+id/textViewPriceTotal" />
+
+    <ListView
+        android:id="@+id/listViewShoppingCart"
+        android:layout_width="0dp"
+        android:layout_height="255dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="ostoskori" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewPriceTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ostoskori"
-        tools:layout_editor_absoluteX="21dp"
-        tools:layout_editor_absoluteY="24dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Yhteensä: 1823,90€"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listViewShoppingCart" />
 </androidx.constraintlayout.widget.ConstraintLayout>

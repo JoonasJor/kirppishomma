@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance().getReference();
 
-        //kirjautuminen
+        // kirjautuminen
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser == null) {
             Log.d("debuggi", "not signed in");
@@ -47,30 +47,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //tuotelistan lataus firebasesta
+    // tuotelistan lataus firebasesta
     private void loadItems() {
         db.child("items").addListenerForSingleValueEvent((new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Log.d("debuggi" ,"item count: " + snapshot.getChildrenCount());
 
-                //ladataan ensin databasesta tuotteet itemListiin
+                // ladataan ensin databasesta tuotteet itemListiin
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     itemList.add(new CustomView(postSnapshot.getValue(Item.class).getImage(),
                                                 postSnapshot.getValue(Item.class).getName(),
-                                      postSnapshot.getValue(Item.class).getPrice() + ""));
+                                      postSnapshot.getValue(Item.class).getPrice() + "€"));
                 }
-                // Now create the instance of the CustomArrayAdapter and pass
-                // the context and arrayList created above
+
+                // listataan tuotteet CustomArrayAdapteria käyttäen
                 CustomArrayAdapter customArrayAdapter = new CustomArrayAdapter(MainActivity.this, itemList);
-
-                // create the instance of the ListView to set the CustomArrayAdapter
                 ListView listView = findViewById(R.id.listView);
-
-                // set the CustomArrayAdapter for ListView
                 listView.setAdapter(customArrayAdapter);
 
-                //viedään tuotteen id ItemListingiin klikattaessa sitä
+                // viedään tuotteen id ItemListingiin klikattaessa sitä
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
